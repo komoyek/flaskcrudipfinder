@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+
+{% block title %} IP Finder {% endblock %}
+
+
+
+{% block body %}
+        <!-- Navigation-->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">IP FINDER V1.0</a>
+                <!--<a class="btn btn-primary" href="">KOMOYEK</a>-->
+            </div>
+        </nav>
+
+<div class="container">
+
+    <br>
+    <br>
+    <h1 >La requete pour : {{data.ip}} </h1>
+
+    <br>
+    <br>
+ {% if data.postal|length <= 0 %}
+
+<h4 style="text-align: center">impossible de resoudre l'ip : {{data.ip}} Veuillez réessayer avec une adresse IP correcte publique et non privée</h4>
+    {% else %}
+    <p>Adresse IP  : {{data.ip}}</p>
+    <p>L'emplacement de la ville : {{data.city}}</p>
+     <p>Le pays de l'IP : {{data.country}}</p>
+      <p>Langue disponible : {{data.languages}}</p>
+
+    <p>Informations de la latitude : {{data.latitude}}</p>
+   <p>Informations de la longitude : {{data.longitude}}</p>
+   <p>Informations sur le fuseau horaire : {{data.timezone}}</p>
+   <p>Code d’appel disponible : {{data.country_calling_code}}</p>
+   <p>Devise disponible : {{data.currency}}</p>
+   <p>Code continent : {{data.org}}</p>
+     <p>Réseau Internet : {{data.continent_code}}</p>
+   <p>Code Postal : {{data.postal}}</p>
+     <p>Décalage UTC  : {{data.utc_offset}}</p>
+
+     {% endif %}
+
+
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Clé</th>
+      <th scope="col">Valeur</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <th scope="row">1</th>
+        <td>Adresse IP  : </td>
+        <td>L'emplacement de la ville : </td>
+         <td>Le pays de l'IP : </td>
+         <td>Langue disponible : </td>
+         <td>Informations de la latitude : </td>
+         <td>Informations de la longitude : </td>
+         <td>Informations sur le fuseau horaire : </td>
+         <td>Code d’appel disponible : </td>
+         <td>Devise disponible : </td>
+         <td>Code continent : </td>
+         <td>Réseau Internet : </td>
+         <td>Code Postal : </td>
+         <td>Décalage UTC  : </td>
+    </tr>
+
+
+    <tr>
+      <th scope="row">2</th>
+          <td>{{data.ip}}</td>
+        <td>{{data.city}}</td>
+         <td>{{data.country}}</td>
+         <td>{{data.languages}}</td>
+         <td>{{data.latitude}}</td>
+         <td>{{data.longitude}}</td>
+         <td>{{data.timezone}}</td>
+         <td>{{data.country_calling_code}}</td>
+         <td>{{data.currency}}</td>
+         <td>{{data.org}}</td>
+         <td>{{data.continent_code}}</td>
+         <td>{{data.postal}}</td>
+         <td>{{data.utc_offset}}</td>
+    </tr>
+
+  </tbody>
+</table>
+
+</div>
+
+
+{% endblock %}

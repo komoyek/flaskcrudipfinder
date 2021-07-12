@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block title %} IP Finder {% endblock %}
+
+
+
+{% block body %}
+
+        <!-- Navigation-->
+        <nav class="navbar navbar-light bg-light static-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">IP FINDER V1.0 BY @KOMOYEK</a>
+                <!--<a class="btn btn-primary" href="">KOMOYEK</a>-->
+            </div>
+        </nav>
+</br>
+</br></br>
+</br>
+            <!-- Masthead-->
+        <header class="masthead">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="text-center text-white">
+                            <!-- Page heading-->
+                            <h1 class="mb-5" style="color: black" >tracker une adresse IP suspecte</h1>
+
+                            <form class="form-subscribe" id="contactForm" action="{{url_for('result')}}" method="post">
+                                <!-- Email address input-->
+                                <div class="row">
+                                    <div class="col">
+                                        <input class="form-control form-control-lg" id="search" name="search" minlength="4" maxlength="20" type="sarch" placeholder="Exemple 192.168.10.1" required="required" />
+
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <input type="submit"  class="btn btn-primary btn-lg" id="submitButton" value="Search">
+
+                                        </input>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </header>
+
+
+
+
+{% endblock %}
