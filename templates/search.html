@@ -9,8 +9,8 @@
 
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light static-top">
-            <div class="container">
-                <a class="navbar-brand" href="/">IP FINDER V1.0 BY @KOMOYEK</a>
+            <div style="background-color:#001a33;" class="container">
+                <a style="color:white;" class="navbar-brand" href="/">IP FINDER V1.0 BY @KOMOYEK</a>
                 <!--<a class="btn btn-primary" href="">KOMOYEK</a>-->
             </div>
         </nav>
@@ -24,13 +24,13 @@
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5" style="color: black" >tracker une adresse IP suspecte</h1>
+                            <h1  class="mb-5" style="color: black; font-family: 'Consolas', sans-serif;" >tracker une adresse IP suspecte</h1>
 
                             <form class="form-subscribe" id="contactForm" action="{{url_for('result')}}" method="post">
                                 <!-- Email address input-->
                                 <div class="row">
                                     <div class="col">
-                                        <input class="form-control form-control-lg" id="search" name="search" minlength="4" maxlength="20" type="sarch" placeholder="Exemple 192.168.10.1" required="required" />
+                                        <input class="form-control form-control-lg" id="search" name="search" minlength="4" maxlength="100" type="sarch" placeholder="Exemple 192.168.10.1" required="required" />
 
                                     </div>
 
