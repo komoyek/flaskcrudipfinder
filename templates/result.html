@@ -24,12 +24,13 @@
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5" style="text-align: center ; color:black; font-family: 'Consolas', sans-serif;" >La requête pour : {{data.ip}}</h1>
+
 
 
                             <div class="container">
 
-
+<h1 class="mb-5" style="text-align: center ; color:black; font-family: 'Consolas', sans-serif;" >La requête pour : {{data.ip}}</h1>
+                                <br>
  {% if data.asn|length <= 0 %}
 
 <h4 style="text-align: center ; color:black; font-family: 'Consolas', sans-serif;">l'adresse: {{data.ip}} n'est pas disponible, Utilisez une adresse de type publique</h4>
@@ -41,15 +42,21 @@
                                     <a style="color: white; text-decoration:none;"  href="{{url_for('Search')}}">retournez à la page de recherche</a></button>
 <button style="background-color:#001a33;" class="btn btn-primary" onclick="window.print()"> <i class="fa fa-print" aria-hidden="true"></i> Imprimez cette table</button>
                                 <br>
+
+
+
     <table class="table table table-hover table-bordered">
+        <div class="container"><
+
+          <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://maps.google.com/maps?q={{data.latitude}},{{data.longitude}}&z=15&output=embed" ></iframe><a href="https://www.fridaynightfunkin.net/">FNF Download</a></div><style>.mapouter{position:relative;text-align:right;width:600px;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:600px;height:400px;}.gmap_iframe {width:600px!important;height:400px!important;}</style></div>
+        </div>
+    </tr>
   <thead  class="thead-dark">
   <br>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Clé</th>
       <th scope="col">Valeur</th>
-
-
     </tr>
   </thead>
   <tbody>
@@ -75,7 +82,7 @@
 
     <tr class="text-left">
       <th scope="row">5</th>
-      <td>Région  :</td>
+      <td>Région de  :</td>
       <td>{{data.region}}</td>
     </tr>
 
