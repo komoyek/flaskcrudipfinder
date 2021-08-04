@@ -12,6 +12,12 @@ app = Flask(__name__)
 def Index():
     return render_template('index.html')
 
+
+@app.route('/pgen', methods = ['GET', 'POST'])
+def Pgen():
+    return render_template('pgen.html')
+
+
 @app.route('/search', methods = ['GET', 'POST'])
 def Search():
     return render_template('search.html')
@@ -23,4 +29,4 @@ def result():
     return render_template('result.html', data=data)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
