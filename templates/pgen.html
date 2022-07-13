@@ -1,78 +1,194 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Password Gen</title>
+    <title>Home</title>
 
-  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-  <!-- <link href="./assets/bootstrap.css" rel="stylesheet"> -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-
+         <!-- Bootstrap CSS  -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <!-- font-awsome CSS -->
+        <link rel="stylesheet" href="static/font-awesome/css/font-awesome.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/stylegen.css">
+            <!-- Our datatable CSS -->
+    <link rel="stylesheet" type="text/css" href="static/DataTables/datatables.min.css"/>
+    <script src="//cdn.ckeditor.com/4.5.9/full/ckeditor.js"></script>
+    <title>Pgen</title>
 </head>
 
-<body>
+{% block body %}
 
 
-  <div style="background-color:#0083c9;"  id="password-generator">
 
-    <input style="color:white;"  value="Générateur de MDP" id="password-output">
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Komoye Security Tools(K.S.T)</h3>
+            <strong style="color">Komoye Security Tools(K.S.T)</strong>
+        </div>
 
-    <div class="range">
-      <input
-        type="range"
-        min="4"
-        max="24"
-        step="1"
-        value="8"
-        id="password-length"
-        oninput="document.getElementById('display-password-length').value=this.value"
-      >
-      <input
-        type="text"
-        value="8"
-        maxlength="2"
-        id="display-password-length"
-        oninput="document.getElementById('password-length').value=this.value"
-      >
+        <ul class="list-unstyled components">
+         <li>
+         <a href=""><i class="fa fa-user fa-2x"></i>
+                <big>W.S.T</big>
+
+            </a>
+         <li>
+
+                <a href="{{url_for('Search')}}" >
+                    <i class="fa fa-globe"></i>
+                    IP LOCATOR
+                </a>
+            </li>
+
+            <li>
+                <a href="{{url_for('Pgen')}}">
+                    <i class="fa fa-key"></i>
+                    PASSWORD GEN
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('search')}}">
+                    <i class="fa fa-search"></i>
+                    PORTSCANNER
+                </a>
+
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+
+ <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="fa fa-bars"></i>
+                                <span>Menu de Navigation</span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li><a href="{{url_for('Search')}}">IP LOCATOR </a></li>
+                                <li><a href="{{url_for('Pgen')}}">PASSWORD GEN</a></li>
+
+                                <li><a href="{{url_for('search')}}">PORTSCANNER</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+
+    <div class="col-sm-12">
+    <h2  style="text-align: center; font-familly: 'Consolas', sans-serif; font-size:18px; border-left:6px solid blue; background-color:skyblue;"><a style="color:black;"  href="/"><i class="fa fa-home"></i> Home / </a> generate a strong password here!</h2>
+
+        </br>
+            <!-- Masthead-->
+        <form class="form-subscribe" id="contactForm" action="{{url_for('result')}}" method="post">
+                  <div class="form-group text-center">
+                    <div class="input-group" style="margin:auto;">
+                      <div style="background-color:#0083c9;"  id="password-generator">
+
+                            <input style="color:white;"  value="Générateur de MDP" id="password-output">
+
+                            <div class="range">
+                              <input
+                                type="range"
+                                min="4"
+                                max="24"
+                                step="1"
+                                value="8"
+                                id="password-length"
+                                oninput="document.getElementById('display-password-length').value=this.value"
+                              >
+                              <input
+                                type="text"
+                                value="8"
+                                maxlength="2"
+                                id="display-password-length"
+                                oninput="document.getElementById('password-length').value=this.value"
+                              >
+                            </div>
+
+                            <div class="flex">
+                              <input type="checkbox" id="lowercase" checked="checked">
+                              <label for="lowercase">a-z</label>
+
+                              <input type="checkbox" id="uppercase">
+                              <label for="uppercase">A-Z</label>
+
+                              <input type="checkbox" id="numbers">
+                              <label for="numbers">0-9</label>
+
+                              <input type="checkbox" id="symbols">
+                              <label for="symbols">!-?</label>
+                            </div>
+
+                            <button id="generateButton" type="button" onclick="generatePassword()"> <i class="fa fa-cog"></i> Générer un mot de passe</button></br>
+
+                                                        <button style="background-color:#001a33" class="btn btn-info" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+                                                            <a style="color: white; text-decoration:none;"  href="/"><i class="fa fa-home"></i> retournez à la page d'accueille</a>
+                                                        </button>
+
+                          </div>
+
+                      </div>
+                  </div>
+        </form>
+
     </div>
+<!--2e-->
+</div>
+</div>
+<footer id="footer" class="midnight-blue">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          &copy; 2022. All Rights Reserved.
+          <div class="credits">
 
-    <div class="flex">
-      <input type="checkbox" id="lowercase" checked="checked">
-      <label for="lowercase">a-z</label>
-
-      <input type="checkbox" id="uppercase">
-      <label for="uppercase">A-Z</label>
-
-      <input type="checkbox" id="numbers">
-      <label for="numbers">0-9</label>
-
-      <input type="checkbox" id="symbols">
-      <label for="symbols">!-?</label>
+            <a href=""></a> by <a href="#">komoye</a>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <ul class="pull-right">
+            <li><a href="#"><i class="fab fa-html5 fa-3x"></i></a></li>
+            <li><a href="#"><i class="fab fa-js fa-3x"></i></a></li>
+            <li><a href="#"><i class="fab fa-php fa-3x "></i></a></li>
+            <li><a href="#"><i class="fab fa-css3 fa-3x"></i></a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-
-    <button id="generateButton" type="button" onclick="generatePassword()"> <i class="fa fa-cog"></i> Générer un mot de passe</button></br>
-
-                                <button style="background-color:#001a33" class="btn btn-info" ><i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                                    <a style="color: white; text-decoration:none;"  href="/"><i class="fa fa-home"></i> retournez à la page d'accueille</a>
-                                </button>
-
-  </div>
+  </footer>
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="{{ url_for('static', filename='js/script.js') }}" type="text/javascript" ></script>
-
-</body>
-
-
+{% endblock %}
+{% block footer %}
 
 
+        <!-- jQuery  -->
+<script src="static/jquery/jquery.min.js"></script>
+         <!-- Bootstrap Js  -->
+<script src="static/js/bootstrap.min.js"></script>
+         <!-- fontawesome Js  -->
+<script defer src="static/font-awesome/svg-with-js/js/fontawesome-all.js"></script>
+          <!-- Our datatable js -->
+ <script type="text/javascript" src="static/DataTables/datatables.min.js"></script>
+          <!-- Our Custom js -->
+ <script src="static/js/main.js"></script>
 
-</html>
-
-
+{% endblock %}
