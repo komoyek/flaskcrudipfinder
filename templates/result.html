@@ -4,21 +4,86 @@
 {% block title %} IP Finder {% endblock %}
 
 
-
 {% block body %}
-        <!-- Navigation-->
-        <nav  class="navbar navbar-light bg-light static-top">
-            <div style="background-color:#001a33;" class="container">
-                <a style="color:white;" class="navbar-brand" href="/">IP FINDER V1.0 BY @KOMOYEK</a>
-                <!--<a class="btn btn-primary" href="">KOMOYEK</a>-->
-            </div>
-        </nav>
 
-   <br>
-    <br>
-    <br>
-    <br>
-        <header class="masthead">
+
+
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Komoye Security Tools(K.S.T)</h3>
+            <strong style="color">Komoye Security Tools(K.S.T)</strong>
+        </div>
+
+        <ul class="list-unstyled components">
+         <li>
+         <a href=""><i class="fa fa-user fa-2x"></i>
+                <big>W.S.T</big>
+
+            </a>
+         <li>
+
+                <a href="{{url_for('Search')}}" >
+                    <i class="fa fa-globe"></i>
+                    IP LOCATOR
+                </a>
+            </li>
+
+            <li>
+                <a href="{{url_for('Pgen')}}">
+                    <i class="fa fa-key"></i>
+                    PASSWORD GEN
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('search')}}">
+                    <i class="fa fa-search"></i>
+                    PORTSCANNER
+                </a>
+
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+
+ <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="fa fa-bars"></i>
+                                <span>Menu de Navigation</span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+
+                                <li><a href="{{url_for('Search')}}">IP LOCATOR </a></li>
+                                <li><a href="{{url_for('Pgen')}}">PASSWORD GEN</a></li>
+
+                                <li><a href="{{url_for('search')}}">PORTSCANNER</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+
+
+    <div class="col-sm-12">
+    <h2  style="text-align: center; font-familly: 'Consolas', sans-serif; font-size:18px; border-left:6px solid blue; background-color:skyblue;"><a style="color:black;"  href="/"><i class="fa fa-home"></i> Home / </a> Tracker une adresse IP suspecte</h2>
+
+        </br>
+            <!-- Masthead-->
+
+                  <div class="form-group text-center">
+                    <div class="input-group" style="margin:auto;">
+
+
+                        <header class="masthead">
 
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
@@ -43,153 +108,176 @@
 <button style="background-color:#001a33;" class="btn btn-primary" onclick="window.print()"> <i class="fa fa-print" aria-hidden="true"></i> Imprimez cette table</button>
                                 <br>
 
-
-
-    <table class="table table table-hover table-bordered">
         <div class="container"><
 
-          <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://maps.google.com/maps?q={{data.latitude}},{{data.longitude}}&z=15&output=embed" ></iframe><a href="https://www.fridaynightfunkin.net/">FNF Download</a></div><style>.mapouter{position:relative;text-align:right;width:600px;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:600px;height:400px;}.gmap_iframe {width:600px!important;height:400px!important;}</style></div>
+          <div class="mapouter">
+              <div class="gmap_canvas">
+                  <iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"  src="https://maps.google.com/maps?q={{data.latitude}},{{data.longitude}}&z=15&output=embed" ></iframe><a href="https://www.fridaynightfunkin.net/">FNF Download</a></div><style>.mapouter{position:relative;text-align:right;width:600px;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:600px;height:400px;}.gmap_iframe {width:600px!important;height:400px!important;}
+                </style>
+          </div>
         </div>
-    </tr>
-  <thead  class="thead-dark">
-  <br>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Clé</th>
-      <th scope="col">Valeur</th>
-    </tr>
-  </thead>
-  <tbody>
 
-    <tr class="text-left">
-      <th scope="row">1</th>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+
+</head>
+<body>
+<tbody>
+<div class="container">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Clés</th>
+        <th>Valeurs</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      <th>1</th>
       <td >Adresse IP  :</td>
       <td>{{data.ip}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">2</th>
+    <tr>
+      <th>2</th>
       <td>Adresse version  :</td>
       <td>{{data.version}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">3</th>
+    <tr>
+      <th>3</th>
       <td>Numéro ASN  :</td>
       <td>{{data.asn}}</td>
     </tr>
 
 
-    <tr class="text-left">
-      <th scope="row">5</th>
+    <tr>
+      <th>5</th>
       <td>Région de  :</td>
       <td>{{data.region}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">6</th>
+    <tr>
+      <th>6</th>
       <td>Code Région  :</td>
       <td>{{data.region_code}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">7</th>
+    <tr>
+      <th>7</th>
       <td>Code du pays  :</td>
       <td>{{data.country_code}}</td>
     </tr>
-    <tr class="text-left">
-      <th scope="row">8</th>
+    <tr>
+      <th>8</th>
       <td>Code iso du pays  :</td>
       <td>{{data.country_code_iso3}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">9</th>
+    <tr>
+      <th>9</th>
       <td>Nom du pays  :</td>
-      <td>{{data.country_name}}</td>
+      <td>{{data.country_name}} {{data.hostname}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">10</th>
+    <tr>
+      <th>10</th>
       <td>La population du pays  :</td>
       <td>{{data.country_population}} habitants</td>
     </tr>
 
 
-    <tr class="text-left">
-      <th scope="row">11</th>
+    <tr>
+      <th>11</th>
       <td>L'emplacement de la ville :</td>
       <td>{{data.city}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">12</th>
+    <tr>
+      <th>12</th>
       <td>Le domaine racine du pays:</td>
       <td>{{data.country_tld}}</td>
     </tr>
 
-      <tr class="text-left">
-      <th scope="row">13</th>
+      <tr>
+      <th>13</th>
       <td>Langue disponible :</td>
       <td>{{data.languages}}</td>
     </tr>
 
-   <tr class="text-left">
-      <th scope="row">14</th>
+   <tr>
+      <th>14</th>
       <td>Informations de la latitude :</td>
       <td>{{data.latitude}}</td>
     </tr>
 
-   <tr class="text-left">
-      <th scope="row">15</th>
+   <tr>
+      <th>15</th>
       <td>Informations de la longitude :</td>
       <td>{{data.longitude}}</td>
     </tr>
 
-   <tr class="text-left">
-      <th scope="row">16</th>
+   <tr>
+      <th>16</th>
       <td>Informations sur le fuseau horaire :</td>
       <td>{{data.timezone}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">17</th>
+    <tr>
+      <th>17</th>
       <td>Code d’appel disponible :</td>
       <td>{{data.country_calling_code}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">18</th>
+    <tr>
+      <th>18</th>
       <td>Devise disponible :</td>
       <td>{{data.currency}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">19</th>
+    <tr>
+      <th>19</th>
       <td>Code continent :</td>
       <td>{{data.continent_code}}</td>
     </tr>
 
-      <tr class="text-left">
-      <th scope="row">20</th>
+      <tr>
+      <th>20</th>
       <td>Fournisseur d'Accès Internet :</td>
       <td>{{data.org}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">21</th>
+    <tr>
+      <th>21</th>
       <td>Code Postal :</td>
       <td>{{data.postal}}</td>
     </tr>
 
-    <tr class="text-left">
-      <th scope="row">22</th>
+    <tr>
+      <th>22</th>
       <td>Décalage UTC  :</td>
       <td>{{data.utc_offset}}</td>
     </tr>
+      <tr>
+      <th>23</th>
+      <td>Drapeau du pays  :</td>
+      <td>{{data.country_flag}}</td>
+    </tr>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
+
+
 {% endif %}
 </div>
 
@@ -199,148 +287,60 @@
 
                                 </div>
 
-                            </form>
+
                         </div>
                     </div>
 
         </header>
 
-</br>
-		<footer class="footer-distributed">
-
-			<div class="footer-right">
-
-				<a href="#"><i class="fa fa-instagram"></i></a>
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="https://www.linkedin.com/in/harouna-moumouni-komoye-9a436aba/"><i class="fa fa-linkedin"></i></a>
-				<a href="https://github.com"><i class="fa fa-github"></i></a>
-
-			</div>
 
 
-            <style>
-                @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 
-* {
-  font-family: Roboto;
-}
+                      </div>
+                  </div>
+        </form>
 
-section {
-  width: 100%;
-  display: inline-block;
-  background: #ccc;
-  height: 60vh;
-  text-align: center;
-  font-size: 22px;
-  font-weight: 700;
-  text-decoration: underline;
-}
+    </div>
+<!--2e-->
+</div>
+</div>
+<footer id="footer" class="midnight-blue">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          &copy; 2022. All Rights Reserved.
+          <div class="credits">
 
-.footer-distributed {
-  background-color: #292c2f;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-  box-sizing: border-box;
-  width: 100%;
-  text-align: left;
-  font: normal 16px sans-serif;
-  padding: 45px 50px;
-}
+            <a href=""></a> by <a href="#">komoye</a>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <ul class="pull-right">
+            <li><a href="#"><i class="fab fa-html5 fa-3x"></i></a></li>
+            <li><a href="#"><i class="fab fa-js fa-3x"></i></a></li>
+            <li><a href="#"><i class="fab fa-php fa-3x "></i></a></li>
+            <li><a href="#"><i class="fab fa-css3 fa-3x"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-.footer-distributed .footer-left p {
-  color: #8f9296;
-  font-size: 14px;
-  margin: 0;
-}
-/* Footer links */
-
-.footer-distributed p.footer-links {
-  font-size: 18px;
-  font-weight: bold;
-  color: #ffffff;
-  margin: 0 0 10px;
-  padding: 0;
-  transition: ease .25s;
-}
-
-.footer-distributed p.footer-links a {
-  display: inline-block;
-  line-height: 1.8;
-  text-decoration: none;
-  color: inherit;
-  transition: ease .25s;
-}
-
-.footer-distributed .footer-links a:before {
-  content: "·";
-  font-size: 20px;
-  left: 0;
-  color: #fff;
-  display: inline-block;
-  padding-right: 5px;
-}
-
-.footer-distributed .footer-links .link-1:before {
-  content: none;
-}
-
-.footer-distributed .footer-right {
-  float: right;
-  margin-top: 6px;
-  max-width: 180px;
-}
-
-.footer-distributed .footer-right a {
-  display: inline-block;
-  width: 35px;
-  height: 35px;
-  background-color: #33383b;
-  border-radius: 2px;
-  font-size: 20px;
-  color: #ffffff;
-  text-align: center;
-  line-height: 35px;
-  margin-left: 3px;
-  transition:all .25s;
-}
-
-.footer-distributed .footer-right a:hover{transform:scale(1.1); -webkit-transform:scale(1.1);}
-
-.footer-distributed p.footer-links a:hover{text-decoration:underline;}
-
-/* Media Queries */
-
-@media (max-width: 600px) {
-  .footer-distributed .footer-left, .footer-distributed .footer-right {
-    text-align: center;
-  }
-  .footer-distributed .footer-right {
-    float: none;
-    margin: 0 auto 20px;
-  }
-  .footer-distributed .footer-left p.footer-links {
-    line-height: 1.8;
-  }
-}
-            </style>
-			<div class="footer-left">
-
-				<p class="footer-links">
-					<a class="link-1" href="/">Home</a>
-
-					<a href="{{url_for('Search')}}">IP LOCATOR</a>
-
-					<a href="{{url_for('Pgen')}}">PASSWORD GEN</a>
-
-					<a href="{{url_for('search')}}">PORTSCANNER</a>
-
-					<a href="#">ABOUT</a>
-
-					<a href="#">Contact</a>
-				</p>
-
-				<p>BlockChainNiger &copy; 2021</p>
-			</div>
-
-		</footer>
 
 {% endblock %}
+{% block footer %}
+
+
+        <!-- jQuery  -->
+<script src="static/jquery/jquery.min.js"></script>
+         <!-- Bootstrap Js  -->
+<script src="static/js/bootstrap.min.js"></script>
+         <!-- fontawesome Js  -->
+<script defer src="static/font-awesome/svg-with-js/js/fontawesome-all.js"></script>
+          <!-- Our datatable js -->
+ <script type="text/javascript" src="static/DataTables/datatables.min.js"></script>
+          <!-- Our Custom js -->
+ <script src="static/js/main.js"></script>
+
+{% endblock %}
+
